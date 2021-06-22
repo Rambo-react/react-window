@@ -45,8 +45,8 @@ min-width:100%;
 
 
 let FieldName = ({ child }) => {
-    return (  
-            <FieldNameStyled>{child}</FieldNameStyled> 
+    return (
+        <FieldNameStyled>{child}</FieldNameStyled>
     )
 }
 
@@ -55,11 +55,11 @@ let FieldName = ({ child }) => {
 let ListHeaders = () => {
 
     let headerNames = ["EAN/PLU", "NAME", "PRODUCER", "Size", "SHELF", "PRODUCT GROUP"]
-    let fieldNames = headerNames.map((item) => <FieldName child={item} />)
+    let fieldNames = headerNames.map((item) => <FieldName key={item} child={item} />)
 
-     return <ListHeadersStyled>
+    return <ListHeadersStyled>
         {fieldNames}
-    </ListHeadersStyled>  
+    </ListHeadersStyled>
     // //берем первый элемент что бы узнать какие вообще поля существуют
     // let obj = useSelector(state => state.products.products[0])
 
@@ -84,9 +84,9 @@ let ListHeaders = () => {
     //         {item}
     //      </div>
     //  })
-    
 
-   
+
+
 }
 
 export default ListHeaders

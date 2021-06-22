@@ -8,12 +8,13 @@ import { searchProducts } from "../../../redux/filter-reducer"
 const FilterWrapper = styled.div`
 background: #60A5EA;
 padding: 6px 5px 7px;
+display: flex;
 `
 
 const FilterInput = styled.input`
 margin: 0;
 padding: 0;
-width: 100%;
+flex: 1;
 height: 32px;
 
 border-radius: 4px;
@@ -33,29 +34,24 @@ line-height: 18px;
 display: flex;
 align-items: center;
 
+outline:none;
 }
 `
 
-
-
 let Filter = (props) => {
 
-const inputRef = useRef();
-const dispatch = useDispatch()
+    const inputRef = useRef();
+    const dispatch = useDispatch()
 
-let findProducts =() => {
-       dispatch(searchProducts(inputRef.current.value))
-    //    dispatch({type:"FIND_PRODUCT", payload: inputRef.current.value})
-}
+    let findProducts = () => {
+        dispatch(searchProducts(inputRef.current.value))
+    }
 
-return (
-    <>
-    <FilterWrapper>
-       <FilterInput ref={inputRef} placeholder="Filter by name" />
-    </FilterWrapper>
-    <button onClick={findProducts}>Search</button>
-    </>
-)
+    return (
+        <FilterWrapper>
+            <FilterInput ref={inputRef} placeholder="Filter by name" onChange={findProducts} />
+        </FilterWrapper>
+    )
 
 }
 

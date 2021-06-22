@@ -6307,7 +6307,7 @@ let InitialState = {
             "shelf_id": 1422
           }
     ],
-    totalProductCount: 700, 
+    totalProductCount: 700,
     isFetchingProducts: true
 }
 

@@ -5,13 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import DropDownSelect from "../DropDownSelect/DropDownSelect";
 import { changeShelf } from "../../redux/products-reducer";
+import productGroupsReducer from "../../redux/productGroups-reducer";
 
 const RowWrapper = styled.div`
 display: flex;
-
 `
 const RowItem = styled.div`
-
 display: flex;
 flex-wrap: nowrap;
 justify-content: space-between;
@@ -49,11 +48,10 @@ min-width: 100%;
 
 const Row = ({ index, style }) => {
 
-    const products = useSelector((state) => state.products.products)
+    const products = useSelector((state) => state.products.products.filter( (products) => products.name.includes(state.filter)))
     const shelfs = useSelector((state) => state.shelfs.shelfs)
     const productGroups = useSelector((state) => state.productGroups.productGroups)
     const item = products[index]
-
     
     return (
         <RowWrapper style={style}>
@@ -76,6 +74,8 @@ const Row = ({ index, style }) => {
 
 
 const ProductList = () => {
+
+
     return (
 
         <AutoSizer>

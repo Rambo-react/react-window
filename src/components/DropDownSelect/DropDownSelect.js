@@ -24,7 +24,6 @@ let DropDownSelect = ({productId, childId, arrayList, ...props }) => {
         // content: "+++";
         // margin-right: 8px;
     } 
-
     
     `
 

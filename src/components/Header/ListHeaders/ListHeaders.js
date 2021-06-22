@@ -12,11 +12,11 @@ color: #AAAAAA;
 `
 
 const ListHeadersStyled = styled.div`
-// height: 35px;
+height: 35px;
 display: flex;
 flex-wrap: nowrap;
 justify-content: space-between;
-// align-items: center;
+align-items: center;
 min-width:100%;   
     div{
         

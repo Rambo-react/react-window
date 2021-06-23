@@ -1,7 +1,4 @@
-// import { useSelector } from "react-redux"
-
 import styled from "styled-components"
-
 
 const FieldNameStyled = styled.div`
 font-family: Helvetica;
@@ -14,14 +11,14 @@ color: #AAAAAA;
 const ListHeadersStyled = styled.div`
 height: 35px;
 display: flex;
-flex-wrap: nowrap;
 justify-content: space-between;
 align-items: center;
-min-width:100%;   
+min-width:100%;  
+margin:0;
+padding:0; 
     div{
-        
         &:nth-child(1) {
-            flex-basis: 200px;
+            flex-basis: 150px;
             padding-left: 30px;
         }
         &:nth-child(2) {
@@ -34,58 +31,22 @@ min-width:100%;
             flex-basis: 80px;
         }
         &:nth-child(5) {
-            flex-basis: 150px;
+            flex-basis: 200px;
         }
         &:nth-child(6) {
-            flex-basis: 150px;
+            flex-basis: 200px;
         }
     }
 `
 
-
-
 let FieldName = ({ child }) => {
-    return (
-        <FieldNameStyled>{child}</FieldNameStyled>
-    )
+    return <FieldNameStyled>{child}</FieldNameStyled>
 }
 
-
-
 let ListHeaders = () => {
-
     let headerNames = ["EAN/PLU", "NAME", "PRODUCER", "Size", "SHELF", "PRODUCT GROUP"]
     let fieldNames = headerNames.map((item) => <FieldName key={item} child={item} />)
-
-    return <ListHeadersStyled>
-        {fieldNames}
-    </ListHeadersStyled>
-    // //берем первый элемент что бы узнать какие вообще поля существуют
-    // let obj = useSelector(state => state.products.products[0])
-
-    // //Функция выбора полей для шапки
-    // let sortHeaders = ( object, arrayOfFieldsNum ) => {
-    //     let outArrayHeaders = []
-    //     let arrayOfHeaders = []
-    //     for (const key in object) {
-
-    //         arrayOfHeaders.push(key)
-    //     }
-
-    //     arrayOfHeaders.filter((item,index) => {
-    //         if (arrayOfFieldsNum.includes(index)) {outArrayHeaders.push(item)}
-    //     })
-
-    //     return outArrayHeaders
-    // }
-
-    //  let Headers = sortHeaders(obj, [1,2,3,4,6,5]).map((item)=>{
-    //      <div>
-    //         {item}
-    //      </div>
-    //  })
-
-
+    return <ListHeadersStyled>{fieldNames}</ListHeadersStyled>
 
 }
 

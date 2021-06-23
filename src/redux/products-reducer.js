@@ -3,7 +3,6 @@ import products from "../data/products.json"
 
 const CHANGE_SHELF = 'CHANGE_SHELF'
 const CHANGE_GROUP = 'CHANGE_GROUP'
-const FILTER = 'DO_FILTER'
 
 let InitialState = {
   products: products

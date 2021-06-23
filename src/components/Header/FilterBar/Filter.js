@@ -1,4 +1,3 @@
-import { useRef } from "react"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import filter from "../../../images/filter.svg"
@@ -40,16 +39,15 @@ outline:none;
 
 let Filter = (props) => {
 
-    const inputRef = useRef();
     const dispatch = useDispatch()
 
-    let findProducts = () => {
-        dispatch(searchProducts(inputRef.current.value))
+    let findProducts = (e) => {
+        dispatch(searchProducts(e.currentTarget.value))
     }
 
     return (
         <FilterWrapper>
-            <FilterInput ref={inputRef} placeholder="Filter by name" onChange={findProducts} />
+            <FilterInput  placeholder="Filter by name" onChange={findProducts} />
         </FilterWrapper>
     )
 

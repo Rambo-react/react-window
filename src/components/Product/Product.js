@@ -17,7 +17,7 @@ justify-content: space-between;
 min-width: 100%;   
     div{
         &:nth-child(1) {
-            flex-basis: 200px;
+            flex-basis: 150px;
             padding-left: 30px;
         }
         &:nth-child(2) {
@@ -30,10 +30,10 @@ min-width: 100%;
             flex-basis: 80px;
         }
         &:nth-child(5) {
-            flex-basis: 150px;
+            flex-basis: 200px!important;
         }
         &:nth-child(6) {
-            flex-basis: 150px;
+            flex-basis: 200px;
         }
     }
 
@@ -41,6 +41,15 @@ min-width: 100%;
 
 const TableWrapper = styled.div`
 flex: 1;
+
+.List::-webkit-scrollbar {
+        display: none;
+      }
+.List {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+}
 `
 
 const Row = ({ index, style }) => {
@@ -49,11 +58,12 @@ const Row = ({ index, style }) => {
     const products = useSelector((state) => state.products.products)
     const filteredProducts = React.useMemo(() => products.filter((product) => product.name.includes(filterValue)), [products, filterValue])
     const item = filteredProducts[index]
+
     const shelfs = useSelector((state) => state.shelfs.shelfs)
     const productGroups = useSelector((state) => state.productGroups.productGroups)
 
-    const handleShelfChange = (productId, shelf_id) => {
-        dispatch(changeShelf(productId, shelf_id));
+    const handleShelfChange = (productId, shelfId) => {
+        dispatch(changeShelf(productId, shelfId));
     };
 
     const handleGroupChange = (productId, groupId) => {
@@ -67,7 +77,7 @@ const Row = ({ index, style }) => {
                 <div>{item.name}</div>
                 <div>{item.producer}</div>
                 <div>{item.wt_vol_pce}</div>
-                <DropDownSelect itemChange={handleShelfChange} productId={item.id} childId={item.shelf_id} arrayList={shelfs} />
+                <DropDownSelect itemChange={handleShelfChange} productId={item.id} childId={item.shelf_id} arrayList={shelfs}/>
                 <DropDownSelect itemChange={handleGroupChange} productId={item.id} childId={item.product_group_id} arrayList={productGroups} />
             </RowItem>
         </RowWrapper>
@@ -80,7 +90,7 @@ const ProductList = () => {
     const productsCount = useSelector((state) => state.products.products.filter((products) => products.name.includes(state.filter)).length)
     return (
         <TableWrapper>
-            <AutoSizer onResize={(size) => console.log(size)} >
+            <AutoSizer>
                 {({ height, width }) => (
                     <List
                         className="List"
